@@ -39,7 +39,7 @@ public class MainSiteTest {
         $x("//div[contains(@class, 'MastHead_masthead')]//h1").shouldHave(text(expectedHeaderText));
     }
 
-    static Stream<Arguments> dataProviderForSelenideSiteMenuTest() {
+    static Stream<Arguments> dataProviderForLanguageSiteMenuTest() {
         return Stream.of(
                 Arguments.of("Brasil", "Segurança virtual que está sempre à frente"),
                 Arguments.of("United States", "Cybersecurity that’s always a step ahead"),
@@ -47,7 +47,7 @@ public class MainSiteTest {
         );
     }
 
-    @MethodSource("dataProviderForSelenideSiteMenuTest")
+    @MethodSource("dataProviderForLanguageSiteMenuTest")
     @ParameterizedTest(name = "Пр выборе языка {0} на новой странице отображается заголовок {1}")
     void selenideSiteMenuTest(String language, String expectedHeader) {
         $x("//header//button[contains(@class, 'PageHeader_globeWrapper')]").click();
