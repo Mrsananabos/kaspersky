@@ -25,8 +25,7 @@ public class MainSiteTest {
     @ParameterizedTest(name = "При выборе в меню вкладки \"{0}\" отображается более 1 подвыбора")
     void menuChoiceTest(String testData) {
         $("header").find(byText(testData)).click();
-        $$x("//header//div[contains(@class, 'MenuDropdown_dropdownVisible')]//a")
-                .shouldBe(sizeGreaterThanOrEqual(1));
+        $$("[class*='MenuDropdown_dropdownVisible'] a").shouldBe(sizeGreaterThanOrEqual(1));
     }
 
     @CsvSource(value = {
@@ -35,8 +34,8 @@ public class MainSiteTest {
     }, delimiter = '|')
     @ParameterizedTest(name = "При выборе \"{0}\" на новой странице отображается заголовок \"{1}\"")
     void headerBaseProductsTest(String buttonData, String expectedHeaderText) {
-        $x("//div[contains(@class, 'MastheadHome_content')]").find(byText(buttonData)).click();
-        $x("//div[contains(@class, 'MastHead_masthead')]//h1").shouldHave(text(expectedHeaderText));
+        $("[class*='MastheadHome_content']").find(byText(buttonData)).click();
+        $("[class*='MastHead_masthead'] h1").shouldHave(text(expectedHeaderText));
     }
 
     static Stream<Arguments> dataProviderForLanguageSiteMenuTest() {
@@ -50,9 +49,9 @@ public class MainSiteTest {
     @MethodSource("dataProviderForLanguageSiteMenuTest")
     @ParameterizedTest(name = "Пр выборе языка {0} на новой странице отображается заголовок {1}")
     void selenideSiteMenuTest(String language, String expectedHeader) {
-        $x("//header//button[contains(@class, 'PageHeader_globeWrapper')]").click();
-        $x("//div[@id='globe_6']").find(byText(language)).click();
-        $x("//h1[contains(@class, 'MastHead_title')]").shouldHave(text(expectedHeader));
+        $("button[class*='PageHeader_globeWrapper']").click();
+        $("#globe_6").find(byText(language)).click();
+        $("h1[class*='MastHead_title']").shouldHave(text(expectedHeader));
     }
 
 }
