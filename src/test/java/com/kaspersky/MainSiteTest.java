@@ -47,7 +47,7 @@ public class MainSiteTest {
     }
 
     @MethodSource("dataProviderForLanguageSiteMenuTest")
-    @ParameterizedTest(name = "Пр выборе языка {0} на новой странице отображается заголовок {1}")
+    @ParameterizedTest(name = "При выборе языка {0} на новой странице отображается заголовок {1}")
     void selenideSiteMenuTest(String language, String expectedHeader) {
         $("button[class*='PageHeader_globeWrapper']").click();
         $("#globe-9").find(byText(language)).click();
