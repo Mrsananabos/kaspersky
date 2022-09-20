@@ -50,7 +50,7 @@ public class MainSiteTest {
     @ParameterizedTest(name = "Пр выборе языка {0} на новой странице отображается заголовок {1}")
     void selenideSiteMenuTest(String language, String expectedHeader) {
         $("button[class*='PageHeader_globeWrapper']").click();
-        $("#globe_6").find(byText(language)).click();
+        $("#globe-9").find(byText(language)).click();
         $("h1[class*='MastHead_title']").shouldHave(text(expectedHeader));
     }
 
